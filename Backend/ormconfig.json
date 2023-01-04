@@ -1,0 +1,11 @@
+{
+  "type": "postgres",
+  "host": "127.0.0.1",
+  "port": "5432",
+  "username": "username",
+  "password": "password",
+  "database": "hyperskills",
+  "entities": ["dist/entity/**/*.js"],
+  "logging": false,
+  "synchronize": true
+}

@@ -1,0 +1,8 @@
+.env
+.vscode
+ngrok.exe
+logs/info.log
+logs/error.log
+node_modules
+package-lock.json
+ssh
