@@ -6,5 +6,7 @@
 
 # Set Up Project
 The root of the Project are divided into `backend` and `frontend`
-... to be continued
+
+Backend works with classical Stack: Express+Postgres
+Frontend works with Vue2
 
