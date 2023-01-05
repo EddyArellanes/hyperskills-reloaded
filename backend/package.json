@@ -9,14 +9,9 @@
     "build": "tsc",
     "start": "node ./dist/server.js",
     "db:up": "docker-compose up -d",
-    "migration-reverse": "ts-node ./lib/buildModels.ts",
-    "migration-reverse-2": "typeorm-model-generator -h 127.0.0.1 -d hyperskills -p 5432 -u postgres -x root -e postgres --output entities",
-    "db-dump-heroku": "heroku pg:backups:capture --app hyperskills && heroku pg:backups:url b030 --app hyperskills",
-    "db-restore-from-heroku": "pg_restore --no-owner -h localhost -U postgres --clean --dbname=hyperskills databases/hyperskills-heroku-backup.dump",
-    "db-dump": "pg_dump -Fc --no-acl --no-owner -h localhost -U postgres hyperskills >  /hyperskills.dump",
-    "db-restore-local": "pg_restore --no-owner -h localhost -U postgres --clean -d hyperskills databases/hyperskills-heroku-backup.dump",
-    "db-restore-heroku": "heroku pg:backups:restore '<SIGNED URL>' DATABASE_URL",
-    "db-backup": "heroku pg:backups:capture --app hyperskills && heroku pg:backups:url b034 --app hyperskills"
+    "db:migrations:up": "docker-compose run --entrypoint dbmate migrations up",
+    "db:migrations:down": "docker-compose run --entrypoint dbmate migrations down",
+    "db:migrations:new": "docker-compose run --entrypoint dbmate migrations new"
   },
   "engines": {
     "node": "13.5.0"

@@ -1,7 +1,6 @@
 version: "3"
-
 services:
-  postgres:
+  database:
     container_name: postgres-hyperskills
     image: postgres:latest
     ports:
@@ -17,9 +16,9 @@ services:
     networks:
       - postgres
 
-  dbmate:
+  migrations:
     links:
-      - postgres:postgres
+      - database:postgres
     container_name: dbmate-hyperskills
     image: amacneil/dbmate
     env_file:
@@ -30,7 +29,6 @@ services:
       DATABASE_URL: 'postgres://${POSTGRESQL_USER}:${POSTGRESQL_PASSWORD}@postgres:${POSTGRESQL_PORT}/${POSTGRESQL_DATABASE}?sslmode=disable'
     volumes:
       - ./db:/db
-      - ./tools:/tools
 
 networks:
   postgres:
