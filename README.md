@@ -10,6 +10,29 @@ The root of the Project are divided into `backend` and `frontend`
 Backend works with classical Stack: Express+Postgres
 Frontend works with Vue2
 
+## Set Up Backend
+### Prerequisites
+- Docker and docker-compose
+- NodeJs >14
+
+Run:
+```bash
+cd backend
+npm i
+npm run db:up
+```
+db:up will set up postgresql and dbmate in a docker container.
+
+then:
+```bash
+npm run dev
+```
+And that's all, if you have db and backend ready, if you want to generate the structure tables and data catalogue inside db, run:
+```bash
+npm run db:migrations:up
+```
+To know about that go to the *Database Migrations and Seeds* section
+
 # Database Migrations and Seeds
 To have a control version and rollback of the Structure and Data cataloge of the database we're using `dbmate` which is a software that takes raw .sql files to make ups and downs.
 
