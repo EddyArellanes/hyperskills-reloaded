@@ -58,3 +58,4 @@ npm run db:migrations:down
 Pending Tech Debt
 
 - [ ] Avoid dbmate to create file with root permissions making unable to write with other users
+- [ ] Brush up basic concepts about Javascript Modules to understand better Vite
