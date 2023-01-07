@@ -56,4 +56,5 @@ npm run db:migrations:down
 ```
 
 Pending Tech Debt
-- [] Avoid dbmate to create file with root permissions making unable to write with other users
+
+- [ ] Avoid dbmate to create file with root permissions making unable to write with other users
