@@ -1,5 +1,25 @@
 import { createApp } from 'vue'
-import './style.css'
+import { createPinia, defineStore } from 'pinia';
 import App from './App.vue'
 
-createApp(App).mount('#app')
+interface Task{
+  name: string;
+  description: string;
+  goal: number;
+}
+const pinia = createPinia();
+const useTodoStore = defineStore('ToDoStore', {
+  state: () => ({
+   todos: [] as Task[]
+  }),
+  actions: {
+    addTodo(todo: Task){
+      this.todos.push(todo)
+    }
+  }
+});
+
+const app = createApp(App);
+
+app.use(pinia);
+app.mount('#app')
