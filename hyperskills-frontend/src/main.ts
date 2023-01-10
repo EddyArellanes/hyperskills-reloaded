@@ -6,9 +6,11 @@ interface Task{
   name: string;
   description: string;
   goal: number;
+  done: boolean;
 }
 const pinia = createPinia();
-const useTodoStore = defineStore('ToDoStore', {
+
+export const useTodoStore = defineStore('ToDoStore', {
   state: () => ({
    todos: [] as Task[]
   }),
@@ -16,6 +18,9 @@ const useTodoStore = defineStore('ToDoStore', {
     addTodo(todo: Task){
       this.todos.push(todo)
     }
+  },
+  getters: {
+    doneTodos: (state) => state.todos.filter(todo => todo.done)
   }
 });
 
