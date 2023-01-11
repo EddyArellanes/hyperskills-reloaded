@@ -1,30 +1,38 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
 import HelloWorld from './components/HelloWorld.vue'
 import { useTodoStore } from './store/todo';
-const { todos } = storeToRefs(useTodoStore());
-const { addTodo } = useTodoStore();
-addTodo({
+const todoStore = useTodoStore();
+let todos = todoStore.todos;
+todoStore.addTodo({
  id: 1,
  name: 'Hola',
  description: 'Hola',
  goal: 100,
  done: false
 });
-addTodo({
+todoStore.addTodo({
  id: 2,
  name: 'Hola2',
  description: 'Hola2',
  goal: 200,
  done: false
 });
+
+function resetStore(){
+  todos = [];
+  // todoStore.$reset();
+  console.log(todos)
+}
 </script>
 
 <template>
   <p>Todo List</p>
-  <div v-for="todo in todos" :key="todo.id">
-    <p>{{todo.id}} {{todo.description}}</p>
-  </div>
+  <div>
+    <div v-for="todo in todos" :key="todo.id">
+      <p>{{todo.id}} {{todo.description}}</p>
+    </div>
+    <button v-on:click="resetStore()">Reset Store</button>
+</div>
   <HelloWorld msg="Vite + Vue" />
 </template>
 
