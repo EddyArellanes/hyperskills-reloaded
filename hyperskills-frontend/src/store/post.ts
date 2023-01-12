@@ -5,7 +5,7 @@ interface Post{
   title: number;
   body: string;
 }
-export const usePostStore = defineStore('PostsStore', {
+export const usePostStore = defineStore('PostStore', {
   state: () => ({
     posts: [] as Post[],
     post: null as Post | null,

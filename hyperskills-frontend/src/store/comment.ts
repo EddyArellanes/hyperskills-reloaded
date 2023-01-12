@@ -23,8 +23,15 @@ export const useCommentStore = defineStore('CommentStore', {
   },
   actions: {
     async fetchComments(){
-      this.comments = await fetch('https://jsonplaceholder.typicode.com/comments/')
-      .then((response) => response.json())
+      this.loading = true;
+      try{
+        this.comments = await fetch('https://jsonplaceholder.typicode.com/comments/')
+        .then((response) => response.json())
+      } catch(error:any){
+        this.error = error;
+      } finally {
+        this.loading = true;  
+      }      
     }
   }
 });
