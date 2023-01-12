@@ -81,7 +81,7 @@ router.get('/notes' , async(req, res) => {
 * @param {date} - Required, Date of the Client
 * @return {json} - Object with the element
 * */
-router.get('/today' ,  [ query('date').exists().withMessage('Date is missing or is invalid')] , async(req: Request, res: Response) => {  
+router.get('/today' ,  [ query('date').exists().withMessage('Date is missing or is invalid')] , async(req, res) => {  
   try{    
       const errors = validationResult( req)
       if (!errors.isEmpty()) {
@@ -113,7 +113,7 @@ router.get('/today' ,  [ query('date').exists().withMessage('Date is missing or 
 * @param {date} - Required, Date of the Client
 * @return {json} - Object with the element
 * */
-router.get('/skill' ,  [ check('id_skill').isNumeric().withMessage('ID Skill must be numeric')] , async(req: Request, res: Response) => {  
+router.get('/skill' ,  [ check('id_skill').isNumeric().withMessage('ID Skill must be numeric')] , async(req, res) => {  
   try{    
       const errors = validationResult( req)
       if (!errors.isEmpty()) {
