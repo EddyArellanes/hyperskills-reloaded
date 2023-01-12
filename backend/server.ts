@@ -1,11 +1,14 @@
 //import 'module-alias/register';
-import app from "./app"
+import createApp from "./app"
 
-//Server is Listening
-app.listen(app.get('port') ,()=> {
+( async () => {
+  //Server is Listening
+  const app = await createApp();
+  app.listen(app.get('port') ,()=> {
     console.log(`
     ----------------------------------
     Beemera Server Initializing on port ${process.env.PORT || '4001'}...
     ----------------------------------
     `)
 })
+})();
