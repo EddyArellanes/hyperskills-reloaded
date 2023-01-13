@@ -3,12 +3,16 @@ import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 const typeDefs = `
   type Query {
-    hello: String
+    hello: String,
+    getPerson(name: String, age: Int): String
   }
 `
+
+//esolvers receives 4 params
 const resolvers = {
   Query: {
-    hello: () => 'hello world'
+    hello: () => 'hello world',
+    getPerson: (_, args) => `Hello my name is ${args.name}`
   }
 }
 
